@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Drinker</title>
+</head>
+<body>
+<h1>Creating new Drinker</h1>
+
+<div>
+    <form action="#" th:action= "@{/drinkers/create}" method="post">
+   Drinker name <input type="text" name="name">
+        <select id="drinkerType" name="drinkerType">
+            <option value="cat">cat</option>
+            <option value="man">man</option>
+        </select>
+        <button type="submit"> ADD Drinker</button>
+
+    </form>
+    <a th:href="@{/home}">Homepage</a><br>
+</div>
+</body>
+</html>
