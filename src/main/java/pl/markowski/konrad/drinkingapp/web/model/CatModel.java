@@ -1,8 +1,10 @@
 package pl.markowski.konrad.drinkingapp.web.model;
 
 public class CatModel extends DrinkerModel {
-    public CatModel(String name, int volume) {
-        super(name, volume);
+  private static final double VOLUME = 1.0;
+
+    public CatModel(String name) {
+        super(name,VOLUME);
     }
 
 
