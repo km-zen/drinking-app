@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Drinker</title>
+</head>
+<body>
+<h1>Update Drinker's name</h1>
+
+<div>
+    <form action="#" th:action="@{/drinkers/update}" th:object="${drinker}" method="post">
+        <input type="hidden" th:field="${drinker.id}">
+        New name <input type="text" th:field="${drinker.name}">
+        <button type="submit">Update Drinker's name</button>
+    </form>
+</div>
+</body>
+</html>

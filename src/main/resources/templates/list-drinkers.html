@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Drinkes List</title>
+</head>
+<body>
+<h1>Drinkes List</h1>
+<div>
+  <table>
+    <thead>
+    <tr>
+      <th>Name </th>
+      <th>Type</th>
+      <th>Volume </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="drinker : ${drinkers}">
+      <td th:text="${drinker.name}"></td>
+      <td th:text="${drinker.type}"></td>
+      <td th:text="${drinker.volume}"></td>
+      <td><a th:href="@{/drinkers/update/{id}(id=${drinker.id})}">Edit</a></td>
+      <td><a th:href="@{/drinkers/delete/{id}(id=${drinker.id})}">Delete</a></td>
+
+
+    </tr>
+    </tbody>
+  </table>
+  <a th:href="@{/home}">Homepage</a></br>
+</div>
+</body>
+</html>
