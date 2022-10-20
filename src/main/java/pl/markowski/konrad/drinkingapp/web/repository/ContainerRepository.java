@@ -1,4 +1,7 @@
 package pl.markowski.konrad.drinkingapp.web.repository;
 
-public interface ContainerRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+import pl.markowski.konrad.drinkingapp.web.repository.entity.ContainerEntity;
+
+public interface ContainerRepository extends JpaRepository<ContainerEntity, Long> {
 }
