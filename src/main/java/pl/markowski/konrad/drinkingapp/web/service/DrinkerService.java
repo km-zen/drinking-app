@@ -1,9 +1,7 @@
 package pl.markowski.konrad.drinkingapp.web.service;
 
 import org.springframework.stereotype.Service;
-import pl.markowski.konrad.drinkingapp.web.model.CatModel;
 import pl.markowski.konrad.drinkingapp.web.model.DrinkerModel;
-import pl.markowski.konrad.drinkingapp.web.model.ManModel;
 import pl.markowski.konrad.drinkingapp.web.repository.DrinkerRepository;
 import pl.markowski.konrad.drinkingapp.web.repository.entity.DrinkerEntity;
 
@@ -12,10 +10,10 @@ import java.util.Optional;
 import java.util.logging.Logger;
 
 @Service
-public class DrinkerService implements TypeValidation{
+public class DrinkerService implements CheckingElementsType {
     private static final Logger LOGGER = Logger.getLogger(DrinkerService.class.getName());
 
-    private DrinkerRepository drinkerRepository;
+    private final DrinkerRepository drinkerRepository;
 
     public DrinkerService(DrinkerRepository drinkerRepository) {
         this.drinkerRepository = drinkerRepository;
@@ -35,7 +33,7 @@ public class DrinkerService implements TypeValidation{
 //        DrinkerModel drinkerModel = new ManModel(name);
 //        drinkerEntity.setVolume(drinkerModel.getVolume());
 //    }
-        drinkerEntity.setVolume(getVolumeFromType(drinkerType));
+        drinkerEntity.setVolume(getVolumeFromDrinkerType(drinkerType));
     drinkerRepository.save(drinkerEntity);
     }
     // R - read

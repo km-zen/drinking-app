@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create container</title>
+</head>
+<body>
+<h1>Creating new Container</h1>
+
+<div>
+  <form action="#" th:action= "@{/containers/create}" method="post">
+    Container name <input type="text" name="name">
+    <select id="containerType" name="containerType">
+      <option value="bottle">bottle</option>
+      <option value="bowl">bowl</option>
+    </select>
+    <button type="submit"> ADD CONTAINER</button>
+
+  </form>
+  <a th:href="@{/home}">Homepage</a><br>
+</div>
+
+</body>
+</html>
