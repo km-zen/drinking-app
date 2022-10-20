@@ -58,7 +58,12 @@ public class DrinkerService implements TypeValidation{
 
     }
     // D - delete
-    public void delete(Long id) {
+    public void delete(Long id) throws Exception {
+        Optional<DrinkerEntity> optionalDrinkerEntity = drinkerRepository.findById(id);
+        DrinkerEntity drinkerEntity = optionalDrinkerEntity.orElseThrow(
+                ()-> new Exception("Can't find drinker with id: " + id )
+        );
+        drinkerRepository.delete(drinkerEntity);
     }
     // L - list
     public List<DrinkerEntity> list() {
