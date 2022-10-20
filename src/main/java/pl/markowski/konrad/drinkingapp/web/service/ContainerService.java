@@ -4,6 +4,7 @@ import org.springframework.stereotype.Service;
 import pl.markowski.konrad.drinkingapp.web.repository.ContainerRepository;
 import pl.markowski.konrad.drinkingapp.web.repository.entity.ContainerEntity;
 
+import java.util.List;
 import java.util.logging.Logger;
 
 @Service
@@ -35,6 +36,7 @@ private final ContainerRepository containerRepository;
     public void delete() {
     }
     // L - list
-    public void list() {
+    public List<ContainerEntity> list() {
+        return containerRepository.findAll();
     }
 }

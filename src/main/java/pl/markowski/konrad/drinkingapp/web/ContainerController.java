@@ -1,6 +1,7 @@
 package pl.markowski.konrad.drinkingapp.web;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,6 +19,11 @@ public class ContainerController {
         this.containerService = containerService;
     }
 
+    @GetMapping
+    public String containersList(Model model) {
+        model.addAttribute("containers", containerService.list());
+        return "list-containers";
+    }
     // C - create
     @GetMapping(value = "/create")
     public String createContainerView() {
@@ -31,4 +37,6 @@ public class ContainerController {
         containerService.create(name, containerType);
         return "redirect:/containers";
     }
+
+
 }
