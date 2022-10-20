@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Drinker Details</title>
+</head>
+<body>
+<h1>Drinker Details</h1>
+<div>
+  <table>
+    <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Volume</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:object="${drinker}">
+      <td th:text="${drinker.name}"></td>
+      <td th:text="${drinker.type}"></td>
+      <td th:text="${drinker.volume}"></td>
+      <td><a th:href="@{/drinkers/edit/{id}(id=${drinker.id})}">Edit</a></td>
+      <td><a th:href="@{/drinkers/delete/{id}(id=${drinker.id})}">Delete</a></td>
+      <td><a th:href="@{/home}">Homepage</a></td>
+
+    </tr>
+    </tbody>
+  </table>
+</div>
+</body>
+</html>

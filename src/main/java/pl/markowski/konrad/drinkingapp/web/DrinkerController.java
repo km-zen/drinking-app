@@ -17,7 +17,7 @@ import java.util.logging.Logger;
 @RequestMapping(value = "/drinkers")
 public class DrinkerController {
     private final Logger LOGGER = Logger.getLogger(DrinkerController.class.getName());
-    private DrinkerService drinkerService;
+    private final DrinkerService drinkerService;
 
     public DrinkerController(DrinkerService drinkerService) {
         this.drinkerService = drinkerService;
@@ -45,7 +45,12 @@ public class DrinkerController {
     }
 
     // R - read
-    public void read() {
+    @GetMapping("/read/{id}")
+    public String read(@PathVariable (name = "id") Long id, Model model) throws Exception {
+        LOGGER.info("read(" + id + ")");
+        DrinkerEntity drinker = drinkerService.read(id);
+        model.addAttribute("drinker",drinker);
+        return "read-drinker";
     }
 
     // U - update
