@@ -1,12 +1,17 @@
 package pl.markowski.konrad.drinkingapp.web.model;
 
 public class DrinkerModel {
+    private Long id;
     private String name;
     private double volume;
 
-    public DrinkerModel(String name, double volume) {
-        this.name = name;
-        this.volume = volume;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -28,7 +33,8 @@ public class DrinkerModel {
     @Override
     public String toString() {
         return "DrinkerModel{" +
-                "name='" + name + '\'' +
+                "id=" + id +
+                ", name='" + name + '\'' +
                 ", volume=" + volume +
                 '}';
     }
