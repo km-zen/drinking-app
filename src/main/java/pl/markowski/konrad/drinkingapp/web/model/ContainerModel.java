@@ -2,18 +2,16 @@ package pl.markowski.konrad.drinkingapp.web.model;
 
 //public record ContainerModel(String name, int volume) {
 public class ContainerModel {
-    protected String name;
-    protected double volume;
+    private Long id;
+    private String name;
+    private double volume;
 
-    public ContainerModel(String name, double volume) {
-        this.name = name;
-        this.volume = volume;
-    }
 
     @Override
     public String toString() {
         return "ContainerModel{" +
-                "name='" + name + '\'' +
+                "id=" + id +
+                ", name='" + name + '\'' +
                 ", volume=" + volume +
                 '}';
     }
