@@ -2,28 +2,37 @@ package pl.markowski.konrad.drinkingapp.web.service;
 
 import org.springframework.stereotype.Service;
 import pl.markowski.konrad.drinkingapp.web.model.DrinkerModel;
+import pl.markowski.konrad.drinkingapp.web.model.DrinkerTypeModel;
 import pl.markowski.konrad.drinkingapp.web.repository.DrinkerRepository;
+import pl.markowski.konrad.drinkingapp.web.repository.DrinkerTypeRepository;
 import pl.markowski.konrad.drinkingapp.web.repository.entity.DrinkerEntity;
+import pl.markowski.konrad.drinkingapp.web.repository.entity.DrinkerTypeEnity;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.logging.Logger;
 
 @Service
-public class DrinkerService implements CheckingElementsType {
+public class DrinkerService {
     private static final Logger LOGGER = Logger.getLogger(DrinkerService.class.getName());
 
     private final DrinkerRepository drinkerRepository;
+    private final DrinkerTypeRepository drinkerTypeRepository;
 
-    public DrinkerService(DrinkerRepository drinkerRepository) {
+    public DrinkerService(DrinkerRepository drinkerRepository, DrinkerTypeRepository drinkerTypeRepository) {
         this.drinkerRepository = drinkerRepository;
+        this.drinkerTypeRepository = drinkerTypeRepository;
     }
 
     // C - create
-    public void create(String name, String drinkerType) {
-    LOGGER.info("create(" + name + " of type: " + drinkerType +")");
+    public void create(String name, String drinkerTypeId) throws Exception {
+    LOGGER.info("create(" + name + " and type id: " + drinkerTypeId +")");
     DrinkerEntity drinkerEntity = new DrinkerEntity();
-        drinkerEntity.setName(name);
+        Optional<DrinkerTypeEnity> optionalDrinkerTypeEnity = drinkerTypeRepository.findById(Long.valueOf(drinkerTypeId));
+        DrinkerTypeEnity drinkerTypeEnity = optionalDrinkerTypeEnity.orElseThrow(
+                () -> new Exception("Can't find drinker type with id: " + drinkerTypeId)
+        );
+
 
         // DrinkerType drinkerType = drinkerTypeRepository.findById(Long.valueOf(drinkerType));
 //    drinkerEntity.setType(drinkerType);
@@ -36,7 +45,9 @@ public class DrinkerService implements CheckingElementsType {
 //        DrinkerModel drinkerModel = new ManModel(name);
 //        drinkerEntity.setVolume(drinkerModel.getVolume());
 //    }
-        drinkerEntity.setVolume(getVolumeFromDrinkerType(drinkerType));
+        drinkerEntity.setVolume(drinkerTypeEnity.getVolume());
+        drinkerEntity.setName(name);
+        drinkerEntity.setType(drinkerTypeEnity);
     drinkerRepository.save(drinkerEntity);
     }
     // R - read

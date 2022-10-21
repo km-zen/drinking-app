@@ -11,7 +11,7 @@ import java.util.Optional;
 import java.util.logging.Logger;
 
 @Service
-public class ContainerService implements CheckingElementsType {
+public class ContainerService {
     private static final Logger LOGGER = Logger.getLogger(ContainerService.class.getName());
 
     private final ContainerRepository containerRepository;
@@ -26,7 +26,7 @@ public class ContainerService implements CheckingElementsType {
         ContainerEntity containerEntity = new ContainerEntity();
         containerEntity.setName(name);
         containerEntity.setType(containerType);
-        containerEntity.setVolume(getVolumeFromContainerType(containerType));
+        containerEntity.setVolume(1);
         containerRepository.save(containerEntity);
     }
 

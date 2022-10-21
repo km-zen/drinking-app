@@ -18,7 +18,7 @@
     <tbody>
     <tr th:each="drinker : ${drinkers}">
       <td th:text="${drinker.name}"></td>
-      <td th:text="${drinker.type}"></td>
+      <td th:text="${drinker.type.name}"></td>
       <td th:text="${drinker.volume}"></td>
       <td><a th:href="@{/drinkers/update/{id}(id=${drinker.id})}">Edit</a></td>
       <td><a th:href="@{/drinkers/delete/{id}(id=${drinker.id})}">Delete</a></td>
