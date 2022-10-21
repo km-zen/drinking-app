@@ -3,8 +3,10 @@ package pl.markowski.konrad.drinkingapp.web.service;
 import org.springframework.stereotype.Service;
 import pl.markowski.konrad.drinkingapp.web.repository.ContainerRepository;
 import pl.markowski.konrad.drinkingapp.web.repository.entity.ContainerEntity;
+import pl.markowski.konrad.drinkingapp.web.repository.entity.DrinkerEntity;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.logging.Logger;
 
 @Service
@@ -27,7 +29,14 @@ private final ContainerRepository containerRepository;
         containerRepository.save(containerEntity);
     }
     // R - read
-    public void read() {
+    public ContainerEntity read(Long id) throws Exception {
+        LOGGER.info("read(" + id + ")");
+        Optional<ContainerEntity> optionalContainerEntity = containerRepository.findById(id);
+        ContainerEntity containerEntity = optionalContainerEntity.orElseThrow(
+                () -> new Exception("Can't find container with id: " + id)
+        );
+        LOGGER.info("read(...) =  " + containerEntity);
+        return containerEntity;
     }
     // U - update
     public void update() {
