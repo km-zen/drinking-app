@@ -3,8 +3,8 @@ package pl.markowski.konrad.drinkingapp.web.model;
 public class DrinkerModel {
     private Long id;
     private String name;
-    private double volume;
-
+    protected DrinkerTypeModel type;
+    protected double volume;
 
     public Long getId() {
         return id;
