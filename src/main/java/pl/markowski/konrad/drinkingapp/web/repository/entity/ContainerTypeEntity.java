@@ -4,21 +4,16 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 
 @Entity
-@Table(name = "CONTAINERS")
-public class ContainerEntity {
-
+@Table(name = "CONTAINER_TYPE")
+public class ContainerTypeEntity {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String name;
     private BigDecimal volume;
 
-    @OneToOne
-    @JoinColumn(name = "CONTAINER_TYPE_ID")
-    private ContainerTypeEntity type;
-
-    public ContainerEntity() {
+    public ContainerTypeEntity() {
     }
 
     public Long getId() {
@@ -45,21 +40,12 @@ public class ContainerEntity {
         this.volume = volume;
     }
 
-    public ContainerTypeEntity getType() {
-        return type;
-    }
-
-    public void setType(ContainerTypeEntity type) {
-        this.type = type;
-    }
-
     @Override
     public String toString() {
-        return "ContainerEntity{" +
+        return "ContainerTypeEntity{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", volume=" + volume +
-                ", type='" + type + '\'' +
                 '}';
     }
 }
