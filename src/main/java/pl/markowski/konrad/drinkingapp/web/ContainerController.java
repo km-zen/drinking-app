@@ -7,9 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import pl.markowski.konrad.drinkingapp.web.model.ContainerModel;
-import pl.markowski.konrad.drinkingapp.web.model.DrinkerModel;
 import pl.markowski.konrad.drinkingapp.web.repository.entity.ContainerEntity;
-import pl.markowski.konrad.drinkingapp.web.repository.entity.DrinkerEntity;
 import pl.markowski.konrad.drinkingapp.web.service.ContainerService;
 
 import java.util.logging.Logger;
@@ -68,6 +66,11 @@ public class ContainerController {
         return "redirect:/containers";
     }
 
-
+    @GetMapping("/delete/{id}")
+    public String delete(@PathVariable(name = "id") Long id) throws Exception {
+        LOGGER.info("delete(" + id + ")");
+        containerService.delete(id);
+        return "redirect:/containers";
+    }
 
 }

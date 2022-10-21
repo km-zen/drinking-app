@@ -45,14 +45,19 @@ public class ContainerService implements CheckingElementsType {
     public void update(ContainerModel containerModel) throws Exception {
         Optional<ContainerEntity> optionalContainerEntity = containerRepository.findById(containerModel.getId());
         ContainerEntity containerEntity = optionalContainerEntity.orElseThrow(
-                () -> new Exception("Can't find drinker with id: " + containerModel.getId())
+                () -> new Exception("Can't find container with id: " + containerModel.getId())
         );
         containerEntity.setName(containerModel.getName());
         containerRepository.save(containerEntity);
     }
 
     // D - delete
-    public void delete() {
+    public void delete(Long id) throws Exception {
+        Optional<ContainerEntity> optionalContainerEntity = containerRepository.findById(id);
+        ContainerEntity containerEntity = optionalContainerEntity.orElseThrow(
+                ()-> new Exception("Can't find container with id: " + id )
+        );
+        containerRepository.delete(containerEntity);
     }
 
     // L - list
