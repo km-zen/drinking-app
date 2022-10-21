@@ -10,13 +10,13 @@
     <form action="#" th:action="@{/...}" method="post">
     <div>
         <span>Select Container</span>
-        <select id="containerId">
+        <select id="containerId" name=""containerId"">
             <option th:each="container : ${containers}" th:text="${container.name}" th:value="${container.id}"></option>
         </select>
     </div>
     <div>
         <span>Select Drinker</span>
-        <select id="drinkerId">
+        <select id="drinkerId" name=""drinkerId"">
             <option th:each="drinker : ${drinkers}" th:text="${drinker.name}" th:value="${drinker.id}"></option>
         </select>
     </div>
