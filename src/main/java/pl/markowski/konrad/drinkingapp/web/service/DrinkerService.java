@@ -23,8 +23,11 @@ public class DrinkerService implements CheckingElementsType {
     public void create(String name, String drinkerType) {
     LOGGER.info("create(" + name + " of type: " + drinkerType +")");
     DrinkerEntity drinkerEntity = new DrinkerEntity();
-    drinkerEntity.setName(name);
-    drinkerEntity.setType(drinkerType);
+        drinkerEntity.setName(name);
+
+        // DrinkerType drinkerType = drinkerTypeRepository.findById(Long.valueOf(drinkerType));
+//    drinkerEntity.setType(drinkerType);
+
 //    if (drinkerType.equals("cat")){
 //       CatModel catModel = new CatModel(name);
 //        drinkerEntity.setVolume(catModel.getVolume());
