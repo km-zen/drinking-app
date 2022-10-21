@@ -1,9 +1,11 @@
 package pl.markowski.konrad.drinkingapp.web.model;
 
+import pl.markowski.konrad.drinkingapp.web.repository.entity.DrinkerTypeEnity;
+
 public class DrinkerModel {
     private Long id;
     private String name;
-    protected DrinkerTypeModel type;
+    protected DrinkerTypeEnity type;
     protected double volume;
 
     public Long getId() {

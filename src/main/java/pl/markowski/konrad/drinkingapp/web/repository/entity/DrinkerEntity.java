@@ -1,8 +1,7 @@
 package pl.markowski.konrad.drinkingapp.web.repository.entity;
 
-import pl.markowski.konrad.drinkingapp.web.model.DrinkerTypeModel;
-
 import javax.persistence.*;
+import java.math.BigDecimal;
 
 @Entity
 @Table(name = "DRINKERS")
@@ -13,12 +12,12 @@ public class DrinkerEntity {
     private Long id;
 
     private String name;
-    private double volume;
+    private BigDecimal volume;
     //    private String type;
 
     @OneToOne
     @JoinColumn(name = "DRINKER_TYPE_ID")
-    private DrinkerTypeModel type;
+    private DrinkerTypeEnity type;
 
     public DrinkerEntity() {
     }
@@ -39,15 +38,22 @@ public class DrinkerEntity {
         this.name = name;
     }
 
-    public double getVolume() {
+    public BigDecimal getVolume() {
         return volume;
     }
 
-    public void setVolume(double volume) {
+    public void setVolume(BigDecimal volume) {
         this.volume = volume;
     }
 
-//    public String getType() {
+    public DrinkerTypeEnity getType() {
+        return type;
+    }
+
+    public void setType(DrinkerTypeEnity type) {
+        this.type = type;
+    }
+    //    public String getType() {
 //        return type;
 //    }
 //

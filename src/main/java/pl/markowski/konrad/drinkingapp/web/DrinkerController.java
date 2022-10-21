@@ -2,15 +2,20 @@ package pl.markowski.konrad.drinkingapp.web;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import pl.markowski.konrad.drinkingapp.web.model.DrinkerModel;
+import pl.markowski.konrad.drinkingapp.web.model.DrinkerTypeModel;
 import pl.markowski.konrad.drinkingapp.web.repository.entity.DrinkerEntity;
+import pl.markowski.konrad.drinkingapp.web.repository.entity.DrinkerTypeEnity;
 import pl.markowski.konrad.drinkingapp.web.service.DrinkerService;
+import pl.markowski.konrad.drinkingapp.web.service.DrinkerTypeService;
 
 
+import java.util.List;
 import java.util.logging.Logger;
 
 @Controller
@@ -18,9 +23,11 @@ import java.util.logging.Logger;
 public class DrinkerController {
     private final Logger LOGGER = Logger.getLogger(DrinkerController.class.getName());
     private final DrinkerService drinkerService;
+    private final DrinkerTypeService drinkerTypeService;
 
-    public DrinkerController(DrinkerService drinkerService) {
+    public DrinkerController(DrinkerService drinkerService, DrinkerTypeService drinkerTypeService) {
         this.drinkerService = drinkerService;
+        this.drinkerTypeService = drinkerTypeService;
     }
 
     // L - list
@@ -32,15 +39,17 @@ public class DrinkerController {
 
     // C - create
     @GetMapping(value = "/create")
-    public String createDrinkerView() {
+    public String createDrinkerView(ModelMap modelMap) {
         LOGGER.info("createDrinkerView()");
+        List<DrinkerTypeEnity> drinkerTypeEnities = drinkerTypeService.list();
+        modelMap.addAttribute("drinkerTypes",drinkerTypeEnities );
         return "create-drinker";
     }
 
     @PostMapping(value = "/create")
-    public String createDrinker(String name, String drinkerType) {
-        LOGGER.info("create: " + name + " of type: " + drinkerType);
-        drinkerService.create(name, drinkerType);
+    public String createDrinker(String name, String drinkerTypeId) throws Exception {
+        LOGGER.info("create: " + name + " and  type id: " + drinkerTypeId );
+        drinkerService.create(name, drinkerTypeId);
         return "redirect:/drinkers";
     }
 

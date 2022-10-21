@@ -1,11 +1,29 @@
-package pl.markowski.konrad.drinkingapp.web.model;
+package pl.markowski.konrad.drinkingapp.web.repository.entity;
 
+import javax.persistence.*;
 import java.math.BigDecimal;
 
-public class DrinkerTypeModel {
+@Entity
+@Table(name = "DRINKER_TYPE")
+public class DrinkerTypeEnity {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String name;
     private BigDecimal volume;
+
+//    @OneToMany
+//    @JoinColumn
+//    private DrinkerEntity drinker;
+
+    public DrinkerTypeEnity() {
+    }
+
+    public DrinkerTypeEnity(String name, BigDecimal volume) {
+        this.name = name;
+        this.volume = volume;
+    }
 
     public Long getId() {
         return id;
@@ -33,9 +51,8 @@ public class DrinkerTypeModel {
 
     @Override
     public String toString() {
-        return "DrinkerTypeModel{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
+        return "DrinkerType{" +
+                "name='" + name + '\'' +
                 ", volume=" + volume +
                 '}';
     }

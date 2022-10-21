@@ -10,9 +10,9 @@
 <div>
     <form action="#" th:action= "@{/drinkers/create}" method="post">
    Drinker name <input type="text" name="name">
-        <select id="drinkerType" name="drinkerType">
-            <option value="cat">cat</option>
-            <option value="man">man</option>
+        <span>Drinker Type</span>
+        <select id="drinkerTypeId" name="drinkerTypeId">
+             <option th:each="drinkerType : ${drinkerTypes}" th:text="${drinkerType.name}" th:value="${drinkerType.id}"></option>
         </select>
         <button type="submit"> ADD Drinker</button>
 
