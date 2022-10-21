@@ -10,9 +10,9 @@
 <div>
   <form action="#" th:action= "@{/containers/create}" method="post">
     Container name <input type="text" name="name">
-    <select id="containerType" name="containerType">
-      <option value="bottle">bottle</option>
-      <option value="bowl">bowl</option>
+    <span>Container Type </span>
+    <select id="containerTypeId" name="containerTypeId">
+      <option th:each="containerType : ${containerTypes}" th:text="${containerType.name}" th:value="${containerType.id}"></option>
     </select>
     <button type="submit"> ADD CONTAINER</button>
 

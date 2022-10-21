@@ -18,7 +18,7 @@
     <tbody>
     <tr th:each="container : ${containers}">
       <td th:text="${container.name}"></td>
-      <td th:text="${container.type}"></td>
+      <td th:text="${container.type.name}"></td>
       <td th:text="${container.volume}"></td>
       <td><a th:href="@{/containers/update/{id}(id=${container.id})}">Edit</a></td>
       <td><a th:href="@{/containers/delete/{id}(id=${container.id})}">Delete</a></td>
