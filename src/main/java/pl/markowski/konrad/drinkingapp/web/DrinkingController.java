@@ -11,6 +11,7 @@ import pl.markowski.konrad.drinkingapp.web.repository.entity.ContainerEntity;
 import pl.markowski.konrad.drinkingapp.web.repository.entity.DrinkerEntity;
 import pl.markowski.konrad.drinkingapp.web.service.ContainerService;
 import pl.markowski.konrad.drinkingapp.web.service.DrinkerService;
+import pl.markowski.konrad.drinkingapp.web.service.DrinkingService;
 
 import java.util.List;
 import java.util.logging.Logger;
@@ -21,11 +22,15 @@ public class DrinkingController {
     private static final Logger LOGGER = Logger.getLogger(DrinkingController.class.getName());
     private final ContainerService containerService;
     private final DrinkerService drinkerService;
+    private final DrinkingService drinkingService;
 
-    public DrinkingController(ContainerService containerService, DrinkerService drinkerService) {
+    public DrinkingController(ContainerService containerService, DrinkerService drinkerService, DrinkingService drinkingService) {
         this.containerService = containerService;
         this.drinkerService = drinkerService;
+        this.drinkingService = drinkingService;
     }
+
+
 
     @GetMapping
     public String matchDashboardView(ModelMap modelMap) {
@@ -37,19 +42,19 @@ public class DrinkingController {
         return "drink-dashboard";
     }
 //    @PostMapping
-//    public String drinkDashboard(String containerId, String drinkerId) {
-//        ContainerEntity containerEntity = containerService.read(containerId);
-//        DrinkerEntity drinkerEntity = drinkerService.read(drinkerId);
+//    public String drinkDashboard(String containerId, String drinkerId) throws Exception {
+//        ContainerEntity containerEntity = containerService.read(Long.valueOf(containerId));
+//        DrinkerEntity drinkerEntity = drinkerService.read(Long.valueOf(drinkerId));
 //        // let matchModel = matchService.match(containerModel, drinkerModel);
-//
-//        Drinking drinking = (drinker, containerModel, volume) -> System.out.println();
-//        matchService.match((drinker, containerModel, volume) -> System.out.println(),
-//                new DrinkerModel("", 1),
-//                new ContainerModel("", 1),
-//                1);
+//        drinkingService.create(drinkerEntity,containerEntity);
+////        Drinking drinking = (drinker, containerModel, volume) -> System.out.println();
+////        matchService.match((drinker, containerModel, volume) -> System.out.println(),
+////                new DrinkerModel("", 1),
+////                new ContainerModel("", 1),
+////                1);
 //
 //        // List<MatchModel> matches = matchService.list();
 //        // modelMap.addAttribute("matches", matches);
-//        return "dashboard.html";
+//        return "home";
 //    }
 }

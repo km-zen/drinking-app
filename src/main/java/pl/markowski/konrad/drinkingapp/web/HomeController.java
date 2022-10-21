@@ -1,8 +1,10 @@
 package pl.markowski.konrad.drinkingapp.web;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import pl.markowski.konrad.drinkingapp.web.service.DrinkingService;
 
 
 @Controller
@@ -19,9 +21,15 @@ for example: Man -> Cat, Glass - > bowl and so on,
 don't forget to validate input parameters.
 Please use MVC pattern and SOLID principal
      */
+private final DrinkingService drinkingService;
+
+    public HomeController(DrinkingService drinkingService) {
+        this.drinkingService = drinkingService;
+    }
 
     @GetMapping
-    public String homeView(){
+    public String homeView(Model model){
+        model.addAttribute("drinks",drinkingService.list());
         return "home";
     }
 

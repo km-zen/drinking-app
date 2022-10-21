@@ -18,5 +18,34 @@
 <a th:href="@{/containers}">SEE CONTAINERS</a></br>
 
 <a th:href="@{/drink}">GET DRUNK</a></br>
+
+<h1>Result List</h1>
+<div>
+    <table>
+        <thead>
+        <tr>
+            <th>Drinker Name</th>
+            <th>Drinker Type</th>
+            <th>Drinker Volume</th>
+            <th>Container Name</th>
+            <th>Container Type</th>
+            <th>Container Volume</th>
+            <th>Result</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="drink : ${drinks}">
+            <td th:text="${drink.drinkerName}"></td>
+            <td th:text="${drink.drinkerType}"></td>
+            <td th:text="${drink.drinkerVolume}"></td>
+            <td th:text="${drink.containerName}"></td>
+            <td th:text="${drink.conainerType}"></td>
+            <td th:text="${drink.containerVolume}"></td>
+            <td th:text="${drink.result}"></td>
+
+        </tr>
+        </tbody>
+    </table>
+</div>
 </body>
 </html>

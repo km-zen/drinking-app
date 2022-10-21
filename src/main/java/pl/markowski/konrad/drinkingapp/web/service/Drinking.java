@@ -5,5 +5,5 @@ import pl.markowski.konrad.drinkingapp.web.model.DrinkerModel;
 
 public interface Drinking {
 
-    void drinking(DrinkerModel drinker, ContainerModel containerModel, int volume);
+    void drinking(DrinkerModel drinker, ContainerModel containerModel);
 }
