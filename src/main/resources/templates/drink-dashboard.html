@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Drink dashboard</title>
+</head>
+<body>
+<h1>Let's drink!</h1>
+<div>
+    <form action="#" th:action="@{/...}" method="post">
+    <div>
+        <span>Select Container</span>
+        <select id="containerId">
+            <option th:each="container : ${containers}" th:text="${container.name}" th:value="${container.id}"></option>
+        </select>
+    </div>
+    <div>
+        <span>Select Drinker</span>
+        <select id="drinkerId">
+            <option th:each="drinker : ${drinkers}" th:text="${drinker.name}" th:value="${drinker.id}"></option>
+        </select>
+    </div>
+        <div>
+            <button type="submit">Save</button>
+        </div>
+    </form>
+</div>
+</body>
+</html>

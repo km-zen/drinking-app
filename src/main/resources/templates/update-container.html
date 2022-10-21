@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Container</title>
+</head>
+<body>
+<h1>Update Container's name</h1>
+
+<div>
+  <form action="#" th:action="@{/containers/update}" th:object="${container}" method="post">
+    <input type="hidden" th:field="${container.id}">
+    New name <input type="text" th:field="${container.name}">
+    <button type="submit">Update Container's name</button>
+  </form>
+</div>
+</body>
+</html>
