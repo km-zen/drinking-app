@@ -62,7 +62,7 @@ public class ContainerService {
     public void delete(Long id) throws Exception {
         Optional<ContainerEntity> optionalContainerEntity = containerRepository.findById(id);
         ContainerEntity containerEntity = optionalContainerEntity.orElseThrow(
-                ()-> new Exception("Can't find container with id: " + id )
+                () -> new Exception("Can't find container with id: " + id)
         );
         containerRepository.delete(containerEntity);
     }

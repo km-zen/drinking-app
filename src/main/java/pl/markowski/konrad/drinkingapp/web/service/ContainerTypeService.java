@@ -15,7 +15,7 @@ public class ContainerTypeService {
     }
 
     //L - list
-    public List<ContainerTypeEntity> list(){
+    public List<ContainerTypeEntity> list() {
         return containerTypeRepository.findAll();
     }
 }

@@ -13,10 +13,6 @@ public class DrinkerTypeEnity {
     private String name;
     private BigDecimal volume;
 
-//    @OneToMany
-//    @JoinColumn
-//    private DrinkerEntity drinker;
-
     public DrinkerTypeEnity() {
     }
 

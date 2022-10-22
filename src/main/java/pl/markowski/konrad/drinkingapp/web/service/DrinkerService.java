@@ -2,7 +2,6 @@ package pl.markowski.konrad.drinkingapp.web.service;
 
 import org.springframework.stereotype.Service;
 import pl.markowski.konrad.drinkingapp.web.model.DrinkerModel;
-import pl.markowski.konrad.drinkingapp.web.model.DrinkerTypeModel;
 import pl.markowski.konrad.drinkingapp.web.repository.DrinkerRepository;
 import pl.markowski.konrad.drinkingapp.web.repository.DrinkerTypeRepository;
 import pl.markowski.konrad.drinkingapp.web.repository.entity.DrinkerEntity;
@@ -26,30 +25,19 @@ public class DrinkerService {
 
     // C - create
     public void create(String name, String drinkerTypeId) throws Exception {
-    LOGGER.info("create(" + name + " and type id: " + drinkerTypeId +")");
-    DrinkerEntity drinkerEntity = new DrinkerEntity();
+        LOGGER.info("create(" + name + " and type id: " + drinkerTypeId + ")");
+        DrinkerEntity drinkerEntity = new DrinkerEntity();
         Optional<DrinkerTypeEnity> optionalDrinkerTypeEnity = drinkerTypeRepository.findById(Long.valueOf(drinkerTypeId));
         DrinkerTypeEnity drinkerTypeEnity = optionalDrinkerTypeEnity.orElseThrow(
                 () -> new Exception("Can't find drinker type with id: " + drinkerTypeId)
         );
 
-
-        // DrinkerType drinkerType = drinkerTypeRepository.findById(Long.valueOf(drinkerType));
-//    drinkerEntity.setType(drinkerType);
-
-//    if (drinkerType.equals("cat")){
-//       CatModel catModel = new CatModel(name);
-//        drinkerEntity.setVolume(catModel.getVolume());
-//    }
-//    else if(drinkerType.equals("man")) {
-//        DrinkerModel drinkerModel = new ManModel(name);
-//        drinkerEntity.setVolume(drinkerModel.getVolume());
-//    }
         drinkerEntity.setVolume(drinkerTypeEnity.getVolume());
         drinkerEntity.setName(name);
         drinkerEntity.setType(drinkerTypeEnity);
-    drinkerRepository.save(drinkerEntity);
+        drinkerRepository.save(drinkerEntity);
     }
+
     // R - read
     public DrinkerEntity read(Long id) throws Exception {
         LOGGER.info("read(" + id + ")");
@@ -60,25 +48,28 @@ public class DrinkerService {
         return drinkerEntity;
 
     }
+
     // U - update
     public void update(DrinkerModel drinkerModel) throws Exception {
         Optional<DrinkerEntity> optionalDrinkerEntity = drinkerRepository.findById(drinkerModel.getId());
         DrinkerEntity drinkerEntity = optionalDrinkerEntity.orElseThrow(
-                ()-> new Exception("Can't find drinker with id: " + drinkerModel.getId()));
-                drinkerEntity.setName(drinkerModel.getName());
-                drinkerRepository.save(drinkerEntity);
+                () -> new Exception("Can't find drinker with id: " + drinkerModel.getId()));
+        drinkerEntity.setName(drinkerModel.getName());
+        drinkerRepository.save(drinkerEntity);
 
     }
+
     // D - delete
     public void delete(Long id) throws Exception {
         Optional<DrinkerEntity> optionalDrinkerEntity = drinkerRepository.findById(id);
         DrinkerEntity drinkerEntity = optionalDrinkerEntity.orElseThrow(
-                ()-> new Exception("Can't find drinker with id: " + id )
+                () -> new Exception("Can't find drinker with id: " + id)
         );
         drinkerRepository.delete(drinkerEntity);
     }
+
     // L - list
     public List<DrinkerEntity> list() {
-       return drinkerRepository.findAll();
+        return drinkerRepository.findAll();
     }
 }

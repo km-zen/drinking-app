@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import pl.markowski.konrad.drinkingapp.web.service.DrinkingService;
 
+import java.util.logging.Logger;
+
 
 @Controller
 @RequestMapping(value = "/home")
@@ -21,20 +23,19 @@ for example: Man -> Cat, Glass - > bowl and so on,
 don't forget to validate input parameters.
 Please use MVC pattern and SOLID principal
      */
-private final DrinkingService drinkingService;
+    private final DrinkingService drinkingService;
+    private static final Logger LOGGER = Logger.getLogger(DrinkingService.class.getName());
 
     public HomeController(DrinkingService drinkingService) {
         this.drinkingService = drinkingService;
     }
 
     @GetMapping
-    public String homeView(Model model){
-        model.addAttribute("drinks",drinkingService.list());
+    public String homeView(Model model) {
+        model.addAttribute("drinks", drinkingService.list());
+        LOGGER.info(drinkingService.list().toString());
         return "home";
     }
-
-
-
 
 
 }

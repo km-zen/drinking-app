@@ -30,6 +30,7 @@ public class ContainerController {
         model.addAttribute("containers", containerService.list());
         return "list-containers";
     }
+
     // C - create
     @GetMapping(value = "/create")
     public String createContainerView(Model model) {
@@ -56,7 +57,7 @@ public class ContainerController {
 
     // U - update
     @GetMapping(value = "/update/{id}")
-    public String updateView(@PathVariable (name = "id") Long id, Model model) throws Exception {
+    public String updateView(@PathVariable(name = "id") Long id, Model model) throws Exception {
         LOGGER.info("upadateContainer(" + id + ")");
         ContainerEntity containerEntity = containerService.read(id);
         model.addAttribute("container", containerEntity);

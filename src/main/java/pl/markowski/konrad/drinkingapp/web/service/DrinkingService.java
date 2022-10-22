@@ -17,7 +17,7 @@ public class DrinkingService implements CompareVolume {
     }
 
     // C - Create
-    public void create(DrinkerEntity drinkerEntity, ContainerEntity containerEntity){
+    public void create(DrinkerEntity drinkerEntity, ContainerEntity containerEntity) {
         DrinkingEntity drinkingEntity = new DrinkingEntity();
         drinkingEntity.setDrinkerName(drinkerEntity.getName());
         drinkingEntity.setDrinkerType(drinkerEntity.getType().getName());
@@ -27,11 +27,12 @@ public class DrinkingService implements CompareVolume {
         drinkingEntity.setContainerType(containerEntity.getType().getName());
         drinkingEntity.setContainerVolume(containerEntity.getVolume());
 
-        drinkingEntity.setResult(compareVolume(drinkerEntity,containerEntity));
+        drinkingEntity.setResult(compareVolume(drinkerEntity, containerEntity));
+        drinkingRepository.save(drinkingEntity);
     }
 
     // L - List
-    public List<DrinkingEntity> list(){
+    public List<DrinkingEntity> list() {
         return drinkingRepository.findAll();
     }
 }

@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import pl.markowski.konrad.drinkingapp.web.model.DrinkerModel;
-import pl.markowski.konrad.drinkingapp.web.model.DrinkerTypeModel;
 import pl.markowski.konrad.drinkingapp.web.repository.entity.DrinkerEntity;
 import pl.markowski.konrad.drinkingapp.web.repository.entity.DrinkerTypeEnity;
 import pl.markowski.konrad.drinkingapp.web.service.DrinkerService;
@@ -42,31 +41,31 @@ public class DrinkerController {
     public String createDrinkerView(ModelMap modelMap) {
         LOGGER.info("createDrinkerView()");
         List<DrinkerTypeEnity> drinkerTypeEnities = drinkerTypeService.list();
-        modelMap.addAttribute("drinkerTypes",drinkerTypeEnities );
+        modelMap.addAttribute("drinkerTypes", drinkerTypeEnities);
         return "create-drinker";
     }
 
     @PostMapping(value = "/create")
     public String createDrinker(String name, String drinkerTypeId) throws Exception {
-        LOGGER.info("create: " + name + " and  type id: " + drinkerTypeId );
+        LOGGER.info("create: " + name + " and  type id: " + drinkerTypeId);
         drinkerService.create(name, drinkerTypeId);
         return "redirect:/drinkers";
     }
 
     // R - read
     @GetMapping("/read/{id}")
-    public String read(@PathVariable (name = "id") Long id, Model model) throws Exception {
+    public String read(@PathVariable(name = "id") Long id, Model model) throws Exception {
         LOGGER.info("read(" + id + ")");
         DrinkerEntity drinker = drinkerService.read(id);
-        model.addAttribute("drinker",drinker);
+        model.addAttribute("drinker", drinker);
         return "read-drinker";
     }
 
     // U - update
     @GetMapping(value = "/update/{id}")
-    public String updateView(@PathVariable (name = "id") Long id, Model model) throws Exception {
-    LOGGER.info("upadateDrinker(" + id + ")");
-    DrinkerEntity drinkerEntity = drinkerService.read(id);
+    public String updateView(@PathVariable(name = "id") Long id, Model model) throws Exception {
+        LOGGER.info("upadateDrinker(" + id + ")");
+        DrinkerEntity drinkerEntity = drinkerService.read(id);
         model.addAttribute("drinker", drinkerEntity);
         return "update-drinker";
     }

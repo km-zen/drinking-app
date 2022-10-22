@@ -7,21 +7,21 @@
 <body>
 <h1>Let's drink!</h1>
 <div>
-    <form action="#" th:action="@{/...}" method="post">
+    <form action="#" th:action="@{/drink}" method="post">
     <div>
         <span>Select Container</span>
-        <select id="containerId" name=""containerId"">
+        <select id="containerId" name="containerId">
             <option th:each="container : ${containers}" th:text="${container.name}" th:value="${container.id}"></option>
         </select>
     </div>
     <div>
         <span>Select Drinker</span>
-        <select id="drinkerId" name=""drinkerId"">
+        <select id="drinkerId" name="drinkerId">
             <option th:each="drinker : ${drinkers}" th:text="${drinker.name}" th:value="${drinker.id}"></option>
         </select>
     </div>
         <div>
-            <button type="submit">Save</button>
+            <button type="submit">Drink</button>
         </div>
     </form>
 </div>

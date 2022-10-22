@@ -1,6 +1,5 @@
 package pl.markowski.konrad.drinkingapp.web.model;
 
-//public record ContainerModel(String name, int volume) {
 public class ContainerModel {
     private Long id;
     private String name;

@@ -35,14 +35,13 @@
         </thead>
         <tbody>
         <tr th:each="drink : ${drinks}">
-            <td th:text="${drink.drinkerName}"></td>
-            <td th:text="${drink.drinkerType}"></td>
-            <td th:text="${drink.drinkerVolume}"></td>
-            <td th:text="${drink.containerName}"></td>
-            <td th:text="${drink.conainerType}"></td>
-            <td th:text="${drink.containerVolume}"></td>
+            <td th:text="${drink.DrinkerName}"> Name</td>
+            <td th:text="${drink.DrinkerType}">type</td>
+            <td th:text="${drink.DrinkerVolume}"></td>
+            <td th:text="${drink.ContainerName}"></td>
+            <td th:text="${drink.ContainerType}"></td>
+            <td th:text="${drink.ContainerVolume}"></td>
             <td th:text="${drink.result}"></td>
-
         </tr>
         </tbody>
     </table>
